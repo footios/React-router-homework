@@ -44,7 +44,7 @@ class App extends Component {
               </ul>
             </nav>
           </header>
-          <div className="App">
+          <div className="App" style={ulStyle}>
             <Switch>
               <Route path="/" exact render={() => <h3>Home</h3>} />
               <Route path="/users" exact component={Users} />
