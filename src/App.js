@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
+import { BrowserRouter, Route, NavLink, Switch, Redirect } from "react-router-dom";
 
 import "./App.css";
 
@@ -41,7 +41,7 @@ class App extends Component {
                 </li>
                 <li style={liStyle}>
                 {/* A link for testing 404 Error */}
-                  <NavLink to="/courses/s">Nowhere</NavLink> 
+                  <NavLink to="/all-courses">Nowhere</NavLink> 
                 </li>
               </ul>
             </nav>
@@ -51,6 +51,7 @@ class App extends Component {
               <Route path="/users" component={Users} />
               <Route path="/courses" component={Courses} />
               {/* <Route render={() => <h1>404 Error</h1>} /> */}
+              <Redirect from='/all-courses' to='/courses' />
               <Route component={_404Error} />
             </Switch>
           </div>

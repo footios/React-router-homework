@@ -25,16 +25,18 @@ class Courses extends Component {
     // like 'courses/w' 
     // If we type a number and a letter it crashes.
     const pathname = this.props.location.pathname;
-    const regex = 'courses/[1-3]'
+    const regex = '/courses'
+    const regex1 = 'courses/[1-3]'
     const regex2 = 'courses/[0-9]|[a-z]|[A-Z]'
 
     let course = null; // so it doesn't render anything when the path is just /courses
   
-
-    if (pathname.match(regex)) {
+    if (pathname.match(regex) && !pathname.match(regex1)) { 
+      course = null
+    } else if (pathname.match(regex1)) {
       course = <Route path="/courses/:id" component={Course} />
     } else if (pathname.match(regex2)){
-        course = <Route component={_404Error} />
+      course = <Route component={_404Error} />
     }
 
 
