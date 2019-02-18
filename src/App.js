@@ -5,6 +5,8 @@ import "./App.css";
 
 import Courses from "./containers/Courses/Courses";
 import Users from "./containers/Users/Users";
+import _404Error from './_404Error';
+
 
 class App extends Component {
   render() {
@@ -31,11 +33,8 @@ class App extends Component {
           <header>
             <nav>
               <ul style={ulStyle}>
-                {/* <li style={liStyle}>
-                  <NavLink to="/">Home</NavLink>
-                </li> */}
                 <li style={liStyle}>
-                  <NavLink to="/">Courses</NavLink>
+                  <NavLink to="/courses/">Courses</NavLink>
                 </li>
                 <li style={liStyle}>
                   <NavLink to="/users">Users</NavLink>
@@ -45,9 +44,10 @@ class App extends Component {
           </header>
           <div className="App" style={ulStyle}>
             <Switch>
-              <Route path="/users" exact component={Users} />
-              <Route path="/" component={Courses} />
-              <Route render={() => <h1>404 Error - Page Not Found</h1>} />
+              <Route path="/users" component={Users} />
+              <Route path="/courses/" component={Courses} />
+              {/* <Route render={() => <h1>404 Error</h1>} /> */}
+              <Route component={_404Error} />
             </Switch>
           </div>
         </div>

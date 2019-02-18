@@ -30,7 +30,7 @@ class Courses extends Component {
             return (
               <Link
                 to={{
-                  pathname: "/" + course.id,
+                  pathname: "/courses/" + course.id,
                   // this is how you pass params through Router
                   state: { message: course.title }
                 }}
@@ -42,7 +42,7 @@ class Courses extends Component {
           })}
         </section>
 
-        <Route path="/:id" component={Course} />
+        <Route path="/courses/:id" component={Course} />
       </div>
     );
   }
