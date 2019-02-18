@@ -5,7 +5,6 @@ import "./App.css";
 
 import Courses from "./containers/Courses/Courses";
 import Users from "./containers/Users/Users";
-import Course from "../src/containers/Course/Course";
 
 class App extends Component {
   render() {
@@ -32,11 +31,11 @@ class App extends Component {
           <header>
             <nav>
               <ul style={ulStyle}>
-                <li style={liStyle}>
+                {/* <li style={liStyle}>
                   <NavLink to="/">Home</NavLink>
-                </li>
+                </li> */}
                 <li style={liStyle}>
-                  <NavLink to="/courses">Courses</NavLink>
+                  <NavLink to="/">Courses</NavLink>
                 </li>
                 <li style={liStyle}>
                   <NavLink to="/users">Users</NavLink>
@@ -46,10 +45,9 @@ class App extends Component {
           </header>
           <div className="App" style={ulStyle}>
             <Switch>
-              <Route path="/" exact render={() => <h3>Home</h3>} />
               <Route path="/users" exact component={Users} />
-              <Route path="/courses" exact component={Courses} />
-              <Route path="/:id" exact component={Course} />
+              <Route path="/" component={Courses} />
+              <Route render={() => <h1>404 Error - Page Not Found</h1>} />
             </Switch>
           </div>
         </div>
@@ -81,5 +79,6 @@ by passing it as query params (you need to manually parse them though!)</li>
 <li>Load the "Course" component as a nested component of "Courses"</li>
 
 <li>Add a 404 error page and render it for any unknown routes</li>
+
 <li>Redirect requests to /all-courses to /courses (=> Your "Courses" page)</li> */
 }
