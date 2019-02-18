@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 
 import Course from "../Course/Course";
-
+import _404Error from '../../_404Error'
 import "./Courses.css";
 
 class Courses extends Component {
@@ -20,7 +20,23 @@ class Courses extends Component {
   // };
 
   render() {
-    console.log(this.props);
+    console.log('pathname: ', this.props.location.pathname);
+    // Now it works only if we do a letter after coursee
+    // like 'courses/w' 
+    // If we type a number and a letter it crashes.
+    const pathname = this.props.location.pathname;
+    const regex = 'courses/[1-3]'
+    const regex2 = 'courses/[0-9]|[a-z]|[A-Z]'
+
+    let course = null; // so it doesn't render anything when the path is just /courses
+  
+
+    if (pathname.match(regex)) {
+      course = <Route path="/courses/:id" component={Course} />
+    } else if (pathname.match(regex2)){
+        course = <Route component={_404Error} />
+    }
+
 
     return (
       <div>
@@ -41,8 +57,7 @@ class Courses extends Component {
             );
           })}
         </section>
-
-        <Route path="/courses/:id" component={Course} />
+        { course }
       </div>
     );
   }
