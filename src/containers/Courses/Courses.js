@@ -29,7 +29,7 @@ class Courses extends Component {
     let course = null; // so it doesn't render anything when the path is just /courses
 
     if (pathname.match(regex)) {
-      course = <Route path="/courses/:id/:title" component={Course} />
+      course = <Route path="/courses/:id" component={Course} />
     } else if (pathname.match(regex1)){
         course = <Route component={_404Error} />
     }
@@ -52,6 +52,10 @@ class Courses extends Component {
                   // Now it's not needed, because we pass title,
                   // the same way we pass the id.
                  // state: { message: course.title }
+
+                 // Now we pass title with query params:
+                 search: '?title=' + course.title
+
                 }}
                 key={course.id}
               >

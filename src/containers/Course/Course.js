@@ -1,11 +1,27 @@
 import React, { Component } from "react";
 
 class Course extends Component {
+state = {
+  courseTitle: ''
+}
+
+// this is to parse the title
+// and set it to the state
+componentDidMount() {
+  const query = new URLSearchParams(this.props.location.search)
+  for (const param of query.entries()) {
+    console.log('param', param);
+    this.setState({courseTitle: param[1]})
+    
+  }
+  
+}
+
   render() {
     console.log("Course", this.props);
     return (
       <div style={{ textAlign: "center", width: "100%" }} >
-        <h1>{this.props.match.params.title}</h1>
+        <h1>{this.state.courseTitle}</h1>
         <p>You selected the Course with ID: {this.props.match.params.id}</p>
       </div>
     );
