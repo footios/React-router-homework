@@ -21,28 +21,23 @@ class Courses extends Component {
 
   render() {
     console.log('pathname: ', this.props.location.pathname);
-    // Now it works only if we do a letter after coursee
-    // like 'courses/w' 
-    // If we type a number and a letter it crashes.
+  
     const pathname = this.props.location.pathname;
-    const regex = '/courses'
-    const regex1 = 'courses/[1-3]'
-    const regex2 = 'courses/[0-9]|[a-z]|[A-Z]'
+    const regex = 'courses/[1-3]'
+    const regex1 = 'courses/.+'
 
     let course = null; // so it doesn't render anything when the path is just /courses
-  
-    if (pathname.match(regex) && !pathname.match(regex1)) { 
-      course = null
-    } else if (pathname.match(regex1)) {
+
+    if (pathname.match(regex)) {
       course = <Route path="/courses/:id" component={Course} />
-    } else if (pathname.match(regex2)){
-      course = <Route component={_404Error} />
+    } else if (pathname.match(regex1)){
+        course = <Route component={_404Error} />
     }
 
 
     return (
       <div>
-        <h1>Amazing Udemy Courses</h1>
+        <h1 style={{textAlign:'center'}}>Amazing Udemy Courses</h1>
         <section className="Courses">
           {this.state.courses.map(course => {
             return (

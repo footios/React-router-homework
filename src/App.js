@@ -10,21 +10,6 @@ import _404Error from './_404Error';
 
 class App extends Component {
   render() {
-    const ulStyle = {
-      listStyle: "none",
-      margin: "0",
-      padding: "0",
-      width: "100%",
-      textAlign: "center"
-    };
-    
-    const liStyle = {
-      display: "inline-block",
-      margin: "20px",
-      ":hover": {
-        color: "green"
-      }
-    };
     
     console.log("app ", this.props);
     return (
@@ -32,21 +17,24 @@ class App extends Component {
         <div>
           <header>
             <nav>
-              <ul style={ulStyle}>
-                <li style={liStyle}>
+              <ul >
+                <li >
                   <NavLink to="/courses">Courses</NavLink>
                 </li>
-                <li style={liStyle}>
+                <li >
                   <NavLink to="/users">Users</NavLink>
                 </li>
-                <li style={liStyle}>
+                <li >
+                  <NavLink to="/all-courses">All Courses</NavLink> 
+                </li>
+                <li >
                 {/* A link for testing 404 Error */}
-                  <NavLink to="/all-courses">Nowhere</NavLink> 
+                  <NavLink to="/courses/d">test 404</NavLink> 
                 </li>
               </ul>
             </nav>
           </header>
-          <div className="App" style={ulStyle}>
+          <div className="App">
             <Switch>
               <Route path="/users" component={Users} />
               <Route path="/courses" component={Courses} />
