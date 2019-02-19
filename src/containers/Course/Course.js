@@ -8,11 +8,22 @@ state = {
 // this is to parse the title
 // and set it to the state
 componentDidMount() {
-  const query = new URLSearchParams(this.props.location.search)
-  for (const param of query.entries()) {
-    console.log('param', param);
-    this.setState({courseTitle: param[1]})
+  this.parseQueryParams()
     
+  }
+
+  componentDidUpdate() {
+    this.parseQueryParams()
+  }
+
+  parseQueryParams(){
+    const query = new URLSearchParams(this.props.location.search)
+    for (const param of query.entries()) {
+      console.log('param', param);
+      // to prevent infinite loop
+      if(this.state.courseTitle !== param[1]) {
+        this.setState({courseTitle: param[1]})
+      }
   }
   
 }
