@@ -29,7 +29,7 @@ class Courses extends Component {
     let course = null; // so it doesn't render anything when the path is just /courses
 
     if (pathname.match(regex)) {
-      course = <Route path="/courses/:id" component={Course} />
+      course = <Route path="/courses/:id/:title" component={Course} />
     } else if (pathname.match(regex1)){
         course = <Route component={_404Error} />
     }
@@ -44,12 +44,14 @@ class Courses extends Component {
               <Link
                 to={{
                   // dynamic solution:
-                  pathname: this.props.match.url + '/' + course.id,
+                  pathname: this.props.match.url + '/' + course.id + '/' + course.title,
                   // hard coded solution:
                   //pathname: "/courses/" + course.id,
-                  
+
                   // this is how you pass params through Router
-                  state: { message: course.title }
+                  // Now it's not needed, because we pass title,
+                  // the same way we pass the id.
+                 // state: { message: course.title }
                 }}
                 key={course.id}
               >
