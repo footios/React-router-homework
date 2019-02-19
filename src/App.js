@@ -8,14 +8,18 @@ import Users from "./containers/Users/Users";
 import _404Error from './_404Error';
 
 
+
 class App extends Component {
+
+  
   render() {
-    
+  
     console.log("app ", this.props);
     return (
       <BrowserRouter>
         <div>
           <header>
+ 
             <nav>
               <ul >
                 <li >
@@ -43,16 +47,7 @@ class App extends Component {
               <Route component={_404Error} />
             </Switch>
           </div>
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
 
-export default App;
-
-{
-  /*
    <li>Add Routes to load "Users" and "Courses" on different pages 
    (by entering a URL, without Links)</li>
 
@@ -73,5 +68,16 @@ by passing it as query params (you need to manually parse them though!)</li>
 
 <li>Add a 404 error page and render it for any unknown routes</li>
 
-<li>Redirect requests to /all-courses to /courses (=> Your "Courses" page)</li> */
+<li>Redirect requests to /all-courses to /courses (=> Your "Courses" page)</li> 
+   
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+
+export default App;
+
+{
+  
 }
