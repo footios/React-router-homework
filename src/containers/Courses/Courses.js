@@ -37,13 +37,17 @@ class Courses extends Component {
 
     return (
       <div>
-        <h1 style={{textAlign:'center'}}>Amazing Udemy Courses</h1>
+        <h1 style={{ textAlign: "center", width: "100%" }}>Amazing Udemy Courses</h1>
         <section className="Courses">
           {this.state.courses.map(course => {
             return (
               <Link
                 to={{
-                  pathname: "/courses/" + course.id,
+                  // dynamic solution:
+                  pathname: this.props.match.url + '/' + course.id,
+                  // hard coded solution:
+                  //pathname: "/courses/" + course.id,
+                  
                   // this is how you pass params through Router
                   state: { message: course.title }
                 }}
